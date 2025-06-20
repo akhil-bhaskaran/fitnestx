@@ -1,6 +1,7 @@
 import 'package:fitness/pages/signup_and_in/text_field.dart';
 import 'package:fitness/widgets/my_elevated_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -29,9 +30,8 @@ class _DietPlannerState extends State<DietPlanner> {
   String _dietPlan = "";
 
   // Replace with your actual Gemini API key
-  final String apiKey = "AIzaSyAT0c_lpnAn5EidGsKyfew3GxTKt3KYPhQ";
-  final String apiUrl =
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
+  final apiKey = dotenv.env['API_KEY'];
+  final apiUrl = dotenv.env['API_URL'];
 
   Future<void> _generateDietPlan() async {
     setState(() {
